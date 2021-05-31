@@ -15,16 +15,11 @@ with mp_face_mesh.FaceMesh(min_detection_confidence=0.5, min_tracking_confidence
     while cap.isOpened():
         success, image = cap.read()
 
-        # Flip the image horizontally for a later selfie-view display, and convert
-        # the BGR image to RGB.
         image = cv2.cvtColor(cv2.flip(image, 1), cv2.COLOR_BGR2RGB)
-        # To improve performance, optionally mark the image as not writeable to
-        # pass by reference.
         image.flags.writeable = False
         results = face_mesh.process(image)
         results_hands = hands.process(image)
 
-        # Draw the face mesh annotations on the image.
         image.flags.writeable = True
         image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
         if results.multi_face_landmarks:
