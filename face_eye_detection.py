@@ -27,9 +27,10 @@ while True:
         cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 3)
         cv2.putText(frame, 'Hand', (x, y), cv2.FONT_HERSHEY_DUPLEX, 1, (0, 0, 0), 1, cv2.LINE_AA)
 
+
     for (x_e, y_e, w_e, h_e) in closed_eyes:
         cv2.rectangle(frame, (x_e, y_e), (x_e + w_e, y_e + h_e), (255, 0, 0), 3)
-        cv2.putText(frame, 'Opened eye', (x_e, y_e), cv2.FONT_HERSHEY_DUPLEX, 1, (0, 0, 0), 1, cv2.LINE_AA)
+        cv2.putText(frame, 'Opened eye', (x_e, y_e), cv2.FONT_HERSHEY_DUPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
 
     if len(closed_eyes) == 0 and not Timer:
         t0 = time.time()
